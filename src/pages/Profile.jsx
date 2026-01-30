@@ -19,7 +19,7 @@ const Profile = () => {
   const defaultAvatar =
     "https://cdn-icons-png.flaticon.com/512/847/847969.png";
 
-  const API = "https://product-review-frontend-6u5h.onrender.com";
+  const API = "https://product-review-backend-ibw8.onrender.com";
 
   useEffect(() => {
     if (!user || !user.id) return;
