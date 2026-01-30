@@ -44,7 +44,8 @@ const Profile = () => {
 
         const myReviews = allProducts.flatMap((product) =>
           (product.reviews || [])
-            .filter((review) => review.userId === user.id)
+          .filter((review) => review.userId.toString() === user.id.toString())
+
             .map((review) => ({
               ...review,
               productId: product.id,
