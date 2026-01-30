@@ -38,27 +38,22 @@ const Profile = () => {
       .catch(() => toast.error("Failed to load profile"));
 
     fetch(`${API}/products`)
-  .then(res => res.json())
-  .then((allProducts) => {
-    console.log("All products:", allProducts);
-
-    const myReviews = allProducts.flatMap((product) =>
-      (product.reviews || [])
-        .filter((review) => review.userId.toString() === user.id.toString())
-        .map((review) => ({
-          ...review,
-          productId: product.id,
-          productName: product.name,
-          date: review.date || "Not available",
-        }))
-    );
-
-    console.log("My reviews:", myReviews);
-    setReviews(myReviews);
-
-      })
-      .catch(() => toast.error("Failed to load reviews"));
-  }, [user]);
+    .then(res => res.json())
+    .then(products => {
+      const userReviews = products.flatMap(product =>
+        (product.reviews || [])
+          .filter(review => review.userId.toString() === user.id.toString())
+          .map(review => ({
+            ...review,
+            productId: product.id,
+            productName: product.name,
+            date: review.date || "Not available"
+          }))
+      );
+      setReviews(userReviews); // save reviews to state
+    })
+    .catch(() => toast.error("Failed to load reviews"));
+}, [user]);
 
   const handleProfileUpdate = () => {
     fetch(`${API}/users/${user.id}`, {
