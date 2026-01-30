@@ -37,7 +37,7 @@ const Profile = () => {
       })
       .catch(() => toast.error("Failed to load profile"));
 
-    fetch(`${API}/products`)
+fetch(`${API}/products`)
     .then(res => res.json())
     .then(products => {
       const userReviews = products.flatMap(product =>
@@ -50,9 +50,14 @@ const Profile = () => {
             date: review.date || "Not available"
           }))
       );
-      setReviews(userReviews); // save reviews to state
+
+      console.log("User reviews found:", userReviews); // debug
+      setReviews(userReviews);
     })
-    .catch(() => toast.error("Failed to load reviews"));
+    .catch(err => {
+      console.error(err);
+      toast.error("Failed to load reviews");
+    });
 }, [user]);
 
   const handleProfileUpdate = () => {
