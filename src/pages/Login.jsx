@@ -12,7 +12,7 @@ const Login = () => {
 
  const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:5000/users?username=${username}&password=${password}`)
+    fetch(`https://product-review-backend-ibw8.onrender.com/users?username=${username}&password=${password}`)
       .then((res) => res.json())
       .then((data) => {
         if (data.length) 

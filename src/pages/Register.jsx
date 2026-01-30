@@ -20,7 +20,7 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:5000/users", {
+    fetch("https://product-review-backend-ibw8.onrender.com/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData),

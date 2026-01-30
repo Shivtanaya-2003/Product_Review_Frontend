@@ -16,7 +16,7 @@ const AddReview = () => {
   const [quality, setQuality] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products/${id}`)
+    fetch(`https://product-review-backend-ibw8.onrender.com/products/${id}`)
       .then((res) => res.json())
       .then((data) => {
         if (!data.reviews) data.reviews = [];
@@ -46,7 +46,7 @@ const AddReview = () => {
   date: new Date().toISOString()
 };
 
-    fetch(`http://localhost:5000/products/${id}`, {
+    fetch(`https://product-review-backend-ibw8.onrender.com/products/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

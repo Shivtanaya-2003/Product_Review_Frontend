@@ -15,7 +15,7 @@ const ProductDetails = () => {
   const [sortType, setSortType] = useState("latest");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products/${id}`)
+    fetch(`https://product-review-backend-ibw8.onrender.com/products/${id}`)
       .then((res) => {
         if (!res.ok) throw new Error("Product not found");
         return res.json();
@@ -59,7 +59,7 @@ const ProductDetails = () => {
       rating,
       comment: reviewText,};
 
-    fetch(`http://localhost:5000/products/${id}`, {
+    fetch(`https://product-review-backend-ibw8.onrender.com/products/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

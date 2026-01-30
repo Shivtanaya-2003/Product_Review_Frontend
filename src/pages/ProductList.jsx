@@ -7,7 +7,7 @@ const ProductList = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("https://product-review-backend-ibw8.onrender.com/products")
       .then(res => res.json())
       .then(setProducts);
   }, []);

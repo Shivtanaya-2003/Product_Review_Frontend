@@ -19,14 +19,14 @@ const AddReview = () => {
       comment,
     };
 
-    fetch("http://localhost:5000/reviews", {
+    fetch("https://product-review-backend-ibw8.onrender.com/products", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newReview),
     })
       .then((res) => res.json())
       .then((review) => {
-        fetch(`http://localhost:5000/products/${id}`, {
+        fetch(`https://product-review-backend-ibw8.onrender.com/products/${id}`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ reviews: [...(review.product?.reviews || []), review.id] }),
